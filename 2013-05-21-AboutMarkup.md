@@ -30,18 +30,43 @@
 
     $ pandoc -H pandoc-markdown.css README.md -o out.html  
 
-**Note:**  
-**如果是用`*.md`做為file extention, 需要在`.vimrc`裡面加入:**  
-
-    autocmd BufRead,BufNewFile *.md set filetype=markdown  
-
-**或是直接在Vim裡面打:**
-
-    :set syntax=markdown
-
 [id-pan]: http://johnmacfarlane.net/pandoc/  
 [id-we]: http://joncom.be/experiments/markdown-editor/edit/  
 [id-dpad]: http://markdownpad.com/  
+
+##Vim Tips  
+
+修改`vimrc`將\*.md標示為Markdown格式, 存檔自動產生HTML檔案.  
+
+```
+" Markdown extention
+autocmd BufRead,BufNewFile *.md set filetype=markdown
+" Auto Pandoc function
+function! AutoPandoc()
+    "check if pandoc exist
+    if filereadable("/usr/bin/pandoc")
+        " get current directory path and append CSS file
+        let s:csspath=expand("%:p:h")."/pandoc-markdownpad-github.css"
+        let s:outPut=expand("%:p:h")."/out.html"
+        if filereadable(s:csspath)
+            "remove old output
+            if filereadable(s:outPut)
+                let rmOut="!rm -rf ".s:outPut." && sync"
+                silent execute rmOut
+            endif
+
+            " run command
+            let runCmd="!pandoc -H ".s:csspath." -s ".expand("%:p")." -o ".s:outPut
+            echo "Auto generated HTML at ".s:outPut
+            silent execute runCmd
+        endif
+    endif
+endfunction
+
+"Audo gen html for markdown
+autocmd BufWritePost *.markdown,*md call AutoPandoc()
+
+```
 
 ##Conclusion  
 * 不用煩惱排版的問題, Blogger與Evernote排版不會差太多.

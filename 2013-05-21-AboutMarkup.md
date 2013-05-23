@@ -46,26 +46,25 @@ function! AutoPandoc()
     "check if pandoc exist
     if filereadable("/usr/bin/pandoc")
         " get current directory path and append CSS file
-        let s:csspath=expand("%:p:h")."/pandoc-markdownpad-github.css"
-        let s:outPut=expand("%:p:h")."/out.html"
-        if filereadable(s:csspath)
+        let l:csspath=expand("%:p:h")."/pandoc-markdownpad-github.css"
+        let l:outPut=expand("%:p:h")."/out.html"
+        if filereadable(l:csspath)
             "remove old output
-            if filereadable(s:outPut)
-                let rmOut="!rm -rf ".s:outPut." && sync"
-                silent execute rmOut
+            if filereadable(l:outPut)
+                let l:rmOut="!rm -rf ".l:outPut." && sync"
+                silent execute l:rmOut
             endif
 
             " run command
-            let runCmd="!pandoc -H ".s:csspath." -s ".expand("%:p")." -o ".s:outPut
-            echo "Auto generated HTML at ".s:outPut
-            silent execute runCmd
+            let l:runCmd="!pandoc -H ".l:csspath." -s ".expand("%:p")." -o ".l:outPut
+            echo "Auto generated HTML at ".l:outPut
+            silent execute l:runCmd
         endif
     endif
 endfunction
 
 "Audo gen html for markdown
 autocmd BufWritePost *.markdown,*md call AutoPandoc()
-
 ```
 
 ##Conclusion  

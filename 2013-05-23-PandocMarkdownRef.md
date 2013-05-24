@@ -97,7 +97,7 @@ $\tuple{a, b, c}$
 
     [ref]: http://example.com/  
     [reference link]: http://www.google.com  
-    [Internal link]: #pandocs-markdown  
+    [Internal link]: #pandocs-markdown-reference  
 
 Output:  
 
@@ -111,7 +111,7 @@ This is [Internal link].
 
 [ref]: http://example.com/  
 [reference link]: http://www.google.com  
-[Internal link]: #pandocs-markdown  
+[Internal link]: #pandocs-markdown-reference  
 
 ##Images  
 Markddown images sytax  
@@ -553,3 +553,4 @@ Output:
                                     rows.
 ----------- ------- --------------- -------------------------
 
+**This is end of article, show defined footnotes as below:**  

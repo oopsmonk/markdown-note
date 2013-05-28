@@ -1,8 +1,15 @@
 #Web Micro Framework Battle  
 
 ##WSGI Micro Framworks  
-這陣子一直在找適合的Micro Framwork做為第一次的Web Application開發.  
-以下是由[WSGI.org][]列出的Micro [Framwork][].  
+這陣子一直在找適合的Micro Framwork玩第一次的Web Application.  
+最後選擇用[Bottle][], 原因是:  
+
+* Single file module, no dependencies with other library.  
+* Document  
+
+但是好不好用又是另一回事, 用了就知道..XD  
+
+以下是由[WSGI.org][]列出的Micro [Framwork][]:  
 
 * [bobo][]  
     Bobo is a light-weight framework. Its goal is to be easy to use and remember.
@@ -22,11 +29,6 @@
 
 ##Micro Framworks Battle  
 
-Reference :   
-[Web Micro Framework Battle 1](http://www.slideshare.net/r1chardj0n3s/web-microframework-battle)  
-[Web Micro Framework Battle 2](https://pydanny-event-notes.readthedocs.org/en/latest/PyconAU2011/web_micro_framework_battle.html)  
-
-
 Rank     Framwork               Point  
 ----- ----------------------- ---------
 1     **Bottle**              7
@@ -40,6 +42,9 @@ Rank     Framwork               Point
 9     aspen.io                -5
 
 
+Reference :   
+[Web Micro Framework Battle 1](http://www.slideshare.net/r1chardj0n3s/web-microframework-battle)  
+[Web Micro Framework Battle 2](https://pydanny-event-notes.readthedocs.org/en/latest/PyconAU2011/web_micro_framework_battle.html)  
 
 [WSGI.org]: http://wsgi.readthedocs.org/en/latest/index.html  
 [Framwork]: http://wsgi.readthedocs.org/en/latest/frameworks.html  

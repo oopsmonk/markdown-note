@@ -9,6 +9,6 @@ Notes write in Pandoc's Markdown syntax.
 
     `$ pandoc -H pandoc-markdown.css -s README.md -o out.html`  
 
-* Include an automatically generated table of contents  
+* Automatically generated table of contents  
 
     `$ pandoc -H pandoc-markdown.css --toc -s README.md -o out.html`  

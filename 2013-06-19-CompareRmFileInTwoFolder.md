@@ -1,18 +1,17 @@
-#!/bin/bash
-#Author: oopsmonk
-#File: comp-rm.sh
-#Date: 2013/06/19
-#
-#Compare the same file in two folder and remove it.
-#
+#Compare the same file in two folders and remove it.
 
+有時在整理照片或文件時, 需要比對2個資料匣, 把重覆的檔案拿掉.  
+
+[**Dwonload Source Here**](https://raw.github.com/oopsmonk/markdown-note/master/shell-script/comp-rm.sh)  
+
+```bash
 function usage(){
-    echo "Find the same file in two folder and remove it."
+    echo "Find the same file in two folders and remove it."
     echo "usage : ./comp-rm.sh target-dir source-dir"
     echo "remove the same files in target-dir."
 }
 
-if [ $# -ne 2 ]; then 
+if [ $# -ne 2 ]; then
     usage
     exit 1
 fi
@@ -23,7 +22,7 @@ f_list1=$(find "$target_dir" -type f)
 f_list2=$(find "$source_dir" -type f)
 
 
-for i in $f_list1; do 
+for i in $f_list1; do
     echo $f_list2 | grep $(basename $i) >/dev/null && hit_str+=$i";"
 done
 
@@ -32,7 +31,6 @@ if [ -z $hit_str ]; then
     exit 0
 fi
 
-#echo "hit_str = $hit_str"
 export IFS=";"
 count=0
 for hit_file in $hit_str; do
@@ -49,3 +47,5 @@ for hit_file in $hit_str; do
 done
 
 exit 0
+```  
+

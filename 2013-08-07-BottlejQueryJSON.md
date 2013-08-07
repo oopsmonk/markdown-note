@@ -13,7 +13,7 @@ $ easy_install bottle
 
 ##Demo server deployment   
 
-###file stracture:    
+###file structure:    
 ```
 BottlejQuery
 ├── bottleJQuery.py

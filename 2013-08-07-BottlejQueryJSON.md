@@ -91,6 +91,96 @@ localhost - - [07/Aug/2013 17:08:23] "POST /bottle/jsontest HTTP/1.1" 200 22
 
 ##Building simple web page  
 
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<title>Bottle & jQuery Mobile</title>
+
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" />
+<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
+
+</head>
+ 
+<body>
+<h3>This is a example using jQuery Mobile and pyhton bottle fromwork. </h3>
+<div data-role="controlgroup" data-type="horizontal">
+    <a href="#" id="btnGetJSON" data-role="button">jQuery.getJSON</a>
+    <a href="#" id="btnPOSTJSON" data-role="button">jQuery.post</a>
+    <a href="#" id="btnAJAXGet" data-role="button">jQuery.ajax GET</a>
+    <a href="#" id="btnAJAXPOST" data-role="button">jQuery.ajax POST</a>
+</div>
+
+<script>
+    //button action 
+    $("#btnGetJSON").click(function(){
+        $.getJSON("jsontest", function(data){
+            $.each(data, function(index, value){
+                alert("index: " + index + " , value: "+ value);
+            });
+        });
+    });
+    
+    $("#btnPOSTJSON").click(function(){
+        alert("Not easy work on bottle !!!");
+        /*
+        It's not work, send JSON via jQuery.post().
+        because the content-Type is not 'application/json',
+        The content type is fixed :
+        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+        that's a problem on bottle.request.json.
+
+        $.post(
+        "jsontest", 
+        JSON.stringify({"id":3, "name":"Ping"}), 
+        function(ret_data, st){
+            alert("Server return : " + ret_data + " , status : " + st); 
+        },
+        'json'
+        );
+        */
+    });
+    
+    $("#btnAJAXGet").click(function(){
+        $.ajax
+        ({
+            url: 'jsontest',
+            success: function(data){
+                $.each(data, function(index, value){
+                    alert("index: " + index + " , value: "+ value);
+                });
+            },
+            /*
+            if dataType not set, the Accept in request header is:
+            'Accept': '* / *'
+            dataType = json :
+            'Accept': 'application/json, text/javascript, * /*; q=0.01'
+            */
+            dataType: 'json'
+        });
+    });
+    
+    $("#btnAJAXPOST").click(function(){
+        var post_data = {"id":3, "name":"Ping"};
+        $.ajax
+        ({
+            type: 'POST',
+            url: 'jsontest',
+            data:JSON.stringify(post_data),
+            contentType: "application/json; charset=utf-8",
+            dataType: 'json',
+            success: function(data){
+                $.each(data, function(index, value){
+                    alert("index: " + index + " , value: "+ value);
+                });
+            }
+        });
+    });
+</script>
+</body>
+</html>
+```
 
 [Bottle]: http://bottlepy.org/docs/dev/  
 [jQuery Mobile]: http://jquerymobile.com/  

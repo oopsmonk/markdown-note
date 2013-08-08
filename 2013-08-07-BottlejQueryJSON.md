@@ -142,7 +142,7 @@ Create 4 buttons in the index.html file:
     localhost - - [08/Aug/2013 01:00:17] "GET /bottle/jsontest HTTP/1.0" 200 25
     ```
     
-    _GET debug message:_   
+    _POST debug message:_   
 
     ```
     POST Header :

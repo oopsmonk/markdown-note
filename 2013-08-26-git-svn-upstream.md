@@ -75,4 +75,20 @@ $ git branch -a
   remotes/git-svn
   remotes/github-moc/master
 
-```  
+```    
+
+#Merge upstream  
+
+```
+$ cd moc-svn-git
+$ git pull 
+fetch remotes/git-svn
+$ git svn fetch
+$ git checkout remotes/git-svn -b upstream-now
+$ git checkout master
+$ git merge upstream-now
+Fix Conflicts...
+$ git add .
+$ git commit
+$ git push
+```
